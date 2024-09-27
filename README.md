@@ -66,6 +66,8 @@ python main.py -m build
 The results reported in our study are stored in the `./logs` folder.
 There are also predefined configs stored in there, which can be used :).
 
+The best architecture reported in the paper is **argmax_1003**.
+
 ## Citation and Contact
 
 If you have any question, feel free to send a mail to `felix.e.f.tempel@ntnu.no`.

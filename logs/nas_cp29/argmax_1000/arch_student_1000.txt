@@ -1,0 +1,124 @@
+Student(
+  (input_stream): ModuleList(
+    (0-3): 4 x InputStream(
+      (init_bn): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (stem_scn): Spatial_Graph_Layer(
+        (conv): SpatialGraphConv(
+          (gcn): Conv2d(4, 64, kernel_size=(1, 1), stride=(1, 1))
+        )
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (residual): Sequential(
+          (0): Conv2d(4, 32, kernel_size=(1, 1), stride=(1, 1))
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (activation): ReLU_Spatial_Graph_Layer
+      )
+      (stem_tcn): Temporal_Basic_Layer(
+        (conv): Conv2d(32, 32, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (residual): Identity()
+        (activation): ReLU_Temporal_Basic_Layer
+      )
+      (block-0_scn): Spatial_Graph_Layer(
+        (conv): SpatialGraphConv(
+          (gcn): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+        )
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (residual): Identity()
+        (activation): ReLU_Spatial_Graph_Layer
+      )
+      (block-0_tcn-0): Temporal_Basic_Layer(
+        (conv): Conv2d(32, 32, kernel_size=(7, 1), stride=(3, 1), padding=(3, 0))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (residual): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(1, 1), stride=(3, 1))
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (activation): ReLU_Temporal_Basic_Layer
+      )
+      (block-0_tcn-1): Temporal_Basic_Layer(
+        (conv): Conv2d(32, 32, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0))
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (residual): Identity()
+        (activation): ReLU_Temporal_Basic_Layer
+      )
+      (block-0_att): AttentionLayer(
+        (att): STJointAtt(
+          (fcn): Sequential(
+            (0): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): Hardswish()
+          )
+          (conv_t): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+          (conv_v): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+        )
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (activation): ReLU_AttentionLayer
+      )
+    )
+  )
+  (main_stream): MainStream(
+    (block-0_scn_main): Spatial_Graph_Layer(
+      (conv): SpatialGraphConv(
+        (gcn): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (residual): Identity()
+      (activation): ReLU_Spatial_Graph_Layer
+    )
+    (block-0_tcn_main): Temporal_Basic_Layer(
+      (conv): Conv2d(128, 128, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0))
+      (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (residual): Identity()
+      (activation): ReLU_Temporal_Basic_Layer
+    )
+    (block-0_att_main): AttentionLayer(
+      (att): STJointAtt(
+        (fcn): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Hardswish()
+        )
+        (conv_t): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+        (conv_v): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU_AttentionLayer
+    )
+    (block-1_scn_main): Spatial_Graph_Layer(
+      (conv): SpatialGraphConv(
+        (gcn): Conv2d(128, 96, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (bn): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (residual): Sequential(
+        (0): Conv2d(128, 48, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (activation): ReLU_Spatial_Graph_Layer
+    )
+    (block-1_tcn_main): Temporal_Basic_Layer(
+      (conv): Conv2d(48, 48, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0))
+      (bn): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (residual): Identity()
+      (activation): ReLU_Temporal_Basic_Layer
+    )
+    (block-1_att_main): AttentionLayer(
+      (att): STJointAtt(
+        (fcn): Sequential(
+          (0): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+          (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): Hardswish()
+        )
+        (conv_t): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+        (conv_v): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (bn): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU_AttentionLayer
+    )
+  )
+  (classifier): Classifier(
+    (gap): AdaptiveAvgPool3d(output_size=1)
+    (dropout): Dropout(p=0.025, inplace=False)
+    (fc): Conv3d(48, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  )
+)
