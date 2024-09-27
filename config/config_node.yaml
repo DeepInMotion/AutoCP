@@ -1,0 +1,10 @@
+example:
+  dataset_args:
+    root_folder: "/cluster/home/user/data/npy_files"
+  work_dir: "/cluster/home/user/code/AutoCP/logs"
+
+your_node:
+  dataset_args:
+    root_folder: ""
+  work_dir: ""
+
